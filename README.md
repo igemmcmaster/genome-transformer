@@ -13,7 +13,7 @@ The numerical representation is termed the "embedding".
 
 An embedding can also be thought of as a point (position vector if you fancy that) in a coordinate space.
 In the previous example, if each number within the sequence is considered a point, a one-dimensional, denoted here as the x-axis, coordinate space filled with seven points is made: `x: {3, 0, 3, 0, 1, 2, 3}`.
-The problem with these embeddings is that they are not too useful; at most they can identify the nucleotides as the mapping is to a unique number.
+The problem with these embeddings is that they are not too useful; at most, they can be used to identify each nucleotide, as the mapping is to a unique number.
 However, they cannot contain higher-order patterns or knowledge, such as whether the gene sequence should be a promoter, coding sequence, or terminator.
 In fact, because we consider each nucleotide as its own embedding, we are limited in scope to the nucleotide level and cannot contain any knowledge at the gene sequence level within the embeddings.
 
