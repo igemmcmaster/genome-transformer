@@ -19,7 +19,7 @@ In fact, because we consider each nucleotide as its own embedding, we are limite
 
 We could reduce the embeddings by taking their sum and consider the sum the embedding of the sequence, that is by summing `3 + 0 + 3 + 0 + 1 + 2 + 3 = 12` and taking `12` as the embedding of `TATACGA`.
 This does not account for the position of the nucleotides however, because addition is commutative; `TATACGA` and `ATATCGA` produce the same embedding.
-To solve this issue, we add a positional aspect to the embedding by adding the position to the nucleotide embedding before our sum reduction, such that the new sequence embedding is `(3 + 0) + (0 + 1) + (3 + 2) + (0 + 3) + (1 + 4) + (2 + 5) + (3 + 6) = 33`.
+To solve this issue, we add a positional aspect to the embedding by adding the position to the nucleotide embedding and scaling the pair by `attn_i` before our sum reduction, such that the new sequence embedding is `attn_0 * (3 + 0) + attn_1 * (0 + 1) + attn_2 * (3 + 2) + attn_3 * (0 + 3) + attn_4 * (1 + 4) + attn_5 * (2 + 5) + attn_6 * (3 + 6) = f(33 | attn_i)` and the resulting embedding is some function of the attention weights `attn_i` and the nucleotide/position pairs which sum to `33`.
 
 The transformer is a class of neural networks that learns the transformation for generating representatively powerful embeddings given many examples of the inputs and outputs of the transformation.
 
