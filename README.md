@@ -34,10 +34,14 @@ In summary, both `attn_i` and `nuc_i` in a n-length gene sequence embedding `att
 The transformer is a class of neural networks that learns the transformation for generating representatively powerful embeddings with attention given many examples of the inputs and outputs of the transformation.
 The attention and nucleotide embeddings are learned with the goal of optimizing something.
 In what is termed "pretraining", we aim to optimize the accuracy of predicting a masked nucleotide.
-For example, we first mask a token within `TATACGA → TATxCGA` and form the input/output pair (`TATxCGA`, `A`) as an example for the transformer neural network to learn from.
+For example, we first mask a token within `TATACGA → TATxCGA` and form the (input, output) pair (`TATxCGA`, `A`) as an example for the transformer neural network to learn from.
 The hypothesis here is that the learned attention and nucleotide embeddings contain information on the intrinsic structure of gene sequences.
 On the basis of the hypothesis, and our knowledge that promoters share common intrinsic structural patterns, the embeddings yielded from promoters should be similar to each other.
-Another way to conceptualize this is that the points (embeddings) are in close-proximity to each other, termed "in the same neighbourhood".
+Another way to conceptualize this is that the points (embeddings) of promoter gene sequences are in close-proximity to each other, termed "in the same neighbourhood".
+This is but one of many applications from pretrained transformers.
+
+We can also learn further mappings between the gene sequence and some extrinsic information, such as the drug-likeness of a gene sequence and its yielded protein, as an example.
+This is termed a "supervised" learning application.
 
 ## Deliverables
 
