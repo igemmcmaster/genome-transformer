@@ -19,10 +19,12 @@ In fact, because we consider each nucleotide as its own embedding, we are limite
 
 We could reduce the embeddings by taking their sum and consider the sum the embedding of the sequence, that is by summing `3 + 0 + 3 + 0 + 1 + 2 + 3 = 12` and taking `12` as the embedding of `TATACGA`.
 This does not account for the position of the nucleotides however, because addition is commutative; `TATACGA` and `ATATCGA` produce the same embedding.
-To solve this issue, we add a positional aspect to the embedding by adding the position to the nucleotide embedding and scaling the pair by `attn_i` before our sum reduction, such that the new sequence embedding is `attn_0 * (3 + 0) + attn_1 * (0 + 1) + attn_2 * (3 + 2) + attn_3 * (0 + 3) + attn_4 * (1 + 4) + attn_5 * (2 + 5) + attn_6 * (3 + 6) = f(33 | attn_i)` and the resulting embedding is some function of the attention weights `attn_i` and the nucleotide/position pairs which sum to `33`.
+To solve this issue, we add a positional aspect to the embedding by adding the position to the nucleotide embedding and scaling the pair by `attn_i` before our sum reduction, such that the new sequence embedding is `attn_1 * (3 + 1) + attn_2 * (0 + 2) + attn_3 * (3 + 3) + attn_4 * (0 + 4) + attn_5 * (1 + 5) + attn_6 * (2 + 6) + attn_7 * (3 + 7) = f(40 | attn_i)` and the resulting embedding is some function of the attention weights `attn_i` and the nucleotide/position pairs which sum to `40`.
 
 The motivation behind the nomenclature of the scaling factor as attention parallels how humans perceive, specifically our instinct to pay attention to things that we care about or things that we focus on.
-Indeed, if an attention weight approaches zero then the nucleotide/position pair that it scales also diminishes towards zero, as if the nucleotide is ignored in the sequence embedding.
+Indeed, if an attention weight approaches zero then the nucleotide/position pair that it scales also diminishes towards zero, as if the nucleotide is ignored in or filtered from the sequence embedding.
+For example in embedding `AT` as the attention of `A` approaches zero the following approximation holds: `0.0001 * (0 + 1) + attn_2 * (3 + 2) ≈ attn_2 * (3 + 2)`, consequently `AT ≈ xT` where `x` is a positional placeholder.
+The ability to attend or filter specific nucleotides makes sense in terms of noisy regions that do not carry much information, such as non-coding sequences.
 
 The transformer is a class of neural networks that learns the transformation for generating representatively powerful embeddings given many examples of the inputs and outputs of the transformation.
 
