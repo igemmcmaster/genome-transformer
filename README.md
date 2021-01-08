@@ -2,6 +2,10 @@
 
 Apply the [Sub-Linear Memory Performer](https://arxiv.org/pdf/2012.11346.pdf) to genome sequences and see what happens.
 
+## Background
+
+What are transformers? This section describes the technology from a highly abstracted perspective.
+
 ## Deliverables
 
 - [ ] Fetch pretraining data: genomes
