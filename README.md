@@ -13,3 +13,22 @@ What are transformers? This section describes the technology from a highly abstr
 - [ ] Pretrain SLiM Performer
 - [ ] Release pretrained model weights
 
+## Credit and Citations
+
+```bibtex
+@article{slim_performer,
+  author    = {Valerii Likhosherstov and
+               Krzysztof Choromanski and
+               Jared Davis and
+               Xingyou Song and
+               Adrian Weller},
+  title     = {Sub-Linear Memory: How to Make Performers SLiM},
+  journal   = {CoRR},
+  volume    = {abs/2012.11346},
+  year      = {2020},
+  url       = {https://arxiv.org/abs/2012.11346},
+  archivePrefix = {arXiv},
+  eprint    = {2012.11346}
+}
+```
+
