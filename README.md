@@ -22,7 +22,7 @@ This does not account for the position of the nucleotides however, because addit
 To solve this issue, we add a positional aspect to the embedding by adding the position to the nucleotide embedding and scaling the pair by `attn_i` before our sum reduction, such that the new sequence embedding is `attn_1 * (3 + 1) + attn_2 * (0 + 2) + attn_3 * (3 + 3) + attn_4 * (0 + 4) + attn_5 * (1 + 5) + attn_6 * (2 + 6) + attn_7 * (3 + 7) = f(40 | attn_i)` and the resulting embedding is some function of the attention weights `attn_i` and the nucleotide/position pairs which sum to `40`.
 
 The motivation behind the nomenclature of the scaling factor as attention parallels how humans perceive, specifically our instinct to pay attention to things that we care about or things that we focus on.
-Indeed, if an attention weight approaches zero then the nucleotide/position pair that it scales also diminishes towards zero, as if the nucleotide is ignored in or filtered from the sequence embedding.
+Indeed, if an attention weight approaches zero, then the nucleotide/position pair that it scales also diminishes towards zero, as if the nucleotide is ignored in or filtered from the sequence embedding.
 For example in embedding `AT` as the attention of `A` approaches zero the following approximation holds: `0.0001 * (0 + 1) + attn_2 * (3 + 2) ≈ attn_2 * (3 + 2)`, consequently `AT ≈ xT` where `x` is a positional placeholder.
 The ability to attend or filter specific nucleotides makes sense in terms of noisy regions that do not carry much information, such as non-coding sequences or wobble base pairs.
 We have so far been operating with one-dimensional nucleotide embeddings fixed from the set `{0, 1, 2, 3}`.
@@ -31,7 +31,13 @@ We can further increase the capacity for the sequence embedding to contain infor
 The transformation then maps one of `{A, C, G, T}` to an k-dimensional point `nuc = (x, y, z, c_1, c_2, ..., c_{k-3})` where `c_i` denote additional axis beyond the three-dimensional coordinate space.
 In summary, both `attn_i` and `nuc_i` in a n-length gene sequence embedding `attn_1 * (nuc_1 + 1) + attn_2 * (nuc_2 + 2) + attn_3 * (nuc_3 + 3) + ... + attn_n * (nuc_n + n)` are learned via machine learning.
 
-The transformer is a class of neural networks that learns the transformation for generating representatively powerful embeddings given many examples of the inputs and outputs of the transformation.
+The transformer is a class of neural networks that learns the transformation for generating representatively powerful embeddings with attention given many examples of the inputs and outputs of the transformation.
+The attention and nucleotide embeddings are learned with the goal of optimizing something.
+In what is termed "pretraining", we aim to optimize the accuracy of predicting a masked nucleotide.
+For example, we first mask a token within `TATACGA → TATxCGA` and form the input/output pair (`TATxCGA`, `A`) as an example for the transformer neural network to learn from.
+The hypothesis here is that the learned attention and nucleotide embeddings contain information on the intrinsic structure of gene sequences.
+On the basis of the hypothesis, and our knowledge that promoters share common intrinsic structural patterns, the embeddings yielded from promoters should be similar to each other.
+Another way to conceptualize this is that the points (embeddings) are in close-proximity to each other, termed "in the same neighbourhood".
 
 ## Deliverables
 
