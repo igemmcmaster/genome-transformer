@@ -21,6 +21,9 @@ We could reduce the embeddings by taking their sum and consider the sum the embe
 This does not account for the position of the nucleotides however, because addition is commutative; `TATACGA` and `ATATCGA` produce the same embedding.
 To solve this issue, we add a positional aspect to the embedding by adding the position to the nucleotide embedding and scaling the pair by `attn_i` before our sum reduction, such that the new sequence embedding is `attn_0 * (3 + 0) + attn_1 * (0 + 1) + attn_2 * (3 + 2) + attn_3 * (0 + 3) + attn_4 * (1 + 4) + attn_5 * (2 + 5) + attn_6 * (3 + 6) = f(33 | attn_i)` and the resulting embedding is some function of the attention weights `attn_i` and the nucleotide/position pairs which sum to `33`.
 
+The motivation behind the nomenclature of the scaling factor as attention parallels how humans perceive, specifically our instinct to pay attention to things that we care about or things that we focus on.
+Indeed, if an attention weight approaches zero then the nucleotide/position pair that it scales also diminishes towards zero, as if the nucleotide is ignored in the sequence embedding.
+
 The transformer is a class of neural networks that learns the transformation for generating representatively powerful embeddings given many examples of the inputs and outputs of the transformation.
 
 ## Deliverables
