@@ -24,7 +24,12 @@ To solve this issue, we add a positional aspect to the embedding by adding the p
 The motivation behind the nomenclature of the scaling factor as attention parallels how humans perceive, specifically our instinct to pay attention to things that we care about or things that we focus on.
 Indeed, if an attention weight approaches zero then the nucleotide/position pair that it scales also diminishes towards zero, as if the nucleotide is ignored in or filtered from the sequence embedding.
 For example in embedding `AT` as the attention of `A` approaches zero the following approximation holds: `0.0001 * (0 + 1) + attn_2 * (3 + 2) ≈ attn_2 * (3 + 2)`, consequently `AT ≈ xT` where `x` is a positional placeholder.
-The ability to attend or filter specific nucleotides makes sense in terms of noisy regions that do not carry much information, such as non-coding sequences.
+The ability to attend or filter specific nucleotides makes sense in terms of noisy regions that do not carry much information, such as non-coding sequences or wobble base pairs.
+We have so far been operating with one-dimensional nucleotide embeddings fixed from the set `{0, 1, 2, 3}`.
+
+We can further increase the capacity for the sequence embedding to contain information by adding dimensions to the nucleotide embedding and learning these embeddings instead of fixing them.
+The transformation then maps one of `{A, C, G, T}` to an k-dimensional point `nuc = (x, y, z, c_1, c_2, ..., c_{k-3})` where `c_i` denote additional axis beyond the three-dimensional coordinate space.
+In summary, both `attn_i` and `nuc_i` in a n-length gene sequence embedding `attn_1 * (nuc_1 + 1) + attn_2 * (nuc_2 + 2) + attn_3 * (nuc_3 + 3) + ... + attn_n * (nuc_n + n)` are learned via machine learning.
 
 The transformer is a class of neural networks that learns the transformation for generating representatively powerful embeddings given many examples of the inputs and outputs of the transformation.
 
