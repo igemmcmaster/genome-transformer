@@ -10,6 +10,7 @@ What are transformers? This section describes the technology from a highly abstr
 
 - [ ] Fetch pretraining data: genomes
 - [ ] Make tokenizer and tokenize gene sequences
+- [ ] Understand how to use Google Research's SLiM Performer [code](https://github.com/google-research/google-research/tree/master/performer/models/slim_performer)
 - [ ] Pretrain SLiM Performer
 - [ ] Release pretrained model weights
 
