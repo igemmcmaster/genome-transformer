@@ -1,0 +1,22 @@
+import numpy as np
+
+def tokenize(
+        nucleotide_sequence):
+    """
+    tokenizer converts a nucleotide sequence to a sequence of ids.
+
+    nucleotide_sequence -- DNA sequence string consisting of A, C, G, T
+    return -- a x-length array consisting of ints corresponding to nucleotides (positions to be decided later)
+    """ 
+    arr = [] # Declare an empty array
+    mappings = {
+        "A" : 0,
+        "C" : 1,
+        "G" : 2,
+        "T" : 3
+    } # Declares the integers that correspond to each nucleotide
+    # counter = 0
+    for x in nucleotide_sequence:
+        arr.append(mappings[x]) # Adds a converted nucleotide to the end of the array
+        # counter += 1 
+    return arr
