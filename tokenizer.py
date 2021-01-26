@@ -36,4 +36,6 @@ def tokenize_k(
     for x in range(0, num_kmers):
         kmer = nucleotide_sequence[x:x+k] # Creates a slice of the nucleotide sequence string
         kmer_list.append([mappings[y] for y in kmer]) # Converts the slice into an array of ints, and adds it to the empty list
+    kmer = nucleotide_sequence[x+1:x+k] + nucleotide_sequence[0] # Accounts for edge case
+    kmer_list.append([mappings[y] for y in kmer]) 
     return kmer_list
