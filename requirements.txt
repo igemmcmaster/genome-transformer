@@ -1,3 +1,2 @@
-ncbi-genome-download
 tokenizers
 transformers
