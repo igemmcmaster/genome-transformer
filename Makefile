@@ -1,8 +1,9 @@
+GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM/3 - Dry lab/Research Development/GenBank"
+
 ascp: domain = none
 ascp:
 	ascp -i $(HOME)/.aspera/connect/etc/asperaweb_id_dsa.openssh -k1 -Tr --precalculate-job-size \
-		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) \
-		"/home/drive/Shareddrives/mGEM/3 - Dry lab/Research Development/GenBank"
+		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)
 
 aspera:
 	wget https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/09ff1/0/ibm-aspera-connect-3.11.1.58-linux-g2.12-64.tar.gz
@@ -20,6 +21,7 @@ colab:
 	cd ../ncbi-genome-download && pip3 install .
 	useradd -m -s /bin/bash -p igem igem
 	adduser igem sudo
+	chown -R igem $(GENBANK_DATA_DIR)
 
 ncbi-genome-download: domain = none
 ncbi-genome-download:
@@ -27,7 +29,7 @@ ncbi-genome-download:
 		--assembly-levels complete \
 		--debug \
 		--formats genbank \
-		--output-folder "/home/drive/Shareddrives/mGEM/3 - Dry lab/Research Development/GenBank" \
+		--output-folder $(GENBANK_DATA_DIR) \
 		--parallel 16 \
 		--progress-bar \
 		--retries 9999 \
