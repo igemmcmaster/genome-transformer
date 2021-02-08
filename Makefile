@@ -1,3 +1,11 @@
+aspera:
+	wget https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/09ff1/0/ibm-aspera-connect-3.11.1.58-linux-g2.12-64.tar.gz
+	tar -xzvf ibm-aspera-connect-3.11.1.58-linux-g2.12-64.tar.gz
+	rm ibm-aspera-connect-3.11.1.58-linux-g2.12-64.tar.gz
+	./ibm-aspera-connect-3.11.1.58-linux-g2.12-64.sh
+	rm -rf ibm-aspera-connect-3.11.1.58-linux-g2.12-64.sh
+	echo "export PATH=$(PATH):$(HOME)/.aspera/connect/bin" >> $(HOME)/.bashrc
+
 colab:
 	apt install vim htop --yes
 	curl -fsSL https://code-server.dev/install.sh | sh
