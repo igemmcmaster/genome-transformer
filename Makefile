@@ -1,4 +1,4 @@
-GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM/3 - Dry lab/Research Development/GenBank"
+GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM/3 - Dry lab/Research Development/genomes/genbank"
 
 ascp: domain = none
 ascp:
