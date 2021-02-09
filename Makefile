@@ -6,7 +6,7 @@ aspera: domain = none
 aspera:
 	/home/$(NONROOT)/.aspera/connect/bin/ascp \
 		-i /home/$(NONROOT)/.aspera/connect/etc/asperaweb_id_dsa.openssh -k1 -Tr -l16m \
-		--overwrite=diff+older \
+		--overwrite=never \
 		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)
 
 colab:
