@@ -1,13 +1,12 @@
 ASPERA_CONNECT = ibm-aspera-connect-3.11.1.58-linux-g2.12-64
-GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM/3 - Dry lab/Research Development/genomes/genbank"
+GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM R&D/genomes/genbank"
 NONROOT = igem
 
 aspera: domain = none
 aspera:
-	mkdir -p $(GENBANK_DATA_DIR)
 	/home/$(NONROOT)/.aspera/connect/bin/ascp \
 		-i /home/$(NONROOT)/.aspera/connect/etc/asperaweb_id_dsa.openssh -k1 -Tr -l128m \
-		--overwrite=never -N="*.gbff.gz" -N="*.gpff.gz" \
+		--overwrite=never -N="*.gbff.gz" -N="*.gpff.gz" -d \
 		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)
 
 colab:
