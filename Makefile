@@ -10,7 +10,7 @@ aspera:
 		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)
 
 colab:
-	apt install vim htop --yes
+	apt install vim htop iftop --yes
 	curl -fsSL https://code-server.dev/install.sh | sh
 	pip3 install -r requirements.txt
 	git clone https://github.com/kblin/ncbi-genome-download.git ../ncbi-genome-download
