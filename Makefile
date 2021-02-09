@@ -12,7 +12,7 @@ aspera:
 	wget https://ak-delivery04-mul.dhe.ibm.com/sar/CMA/OSA/09ff1/0/$(ASPERA_CONNECT).tar.gz
 	tar -xzvf $(ASPERA_CONNECT).tar.gz
 	rm $(ASPERA_CONNECT).tar.gz
-	./$(ASPERA_CONNECT).sh
+	su igem -c "./$(ASPERA_CONNECT).sh"
 	rm -rf $(ASPERA_CONNECT).sh
 
 colab:
