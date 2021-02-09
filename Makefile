@@ -4,7 +4,7 @@ NONROOT = igem
 
 aspera: domain = none
 aspera:
-	/home/$(NONROOT)/.aspera/connect/bin/ascp -k1 -drTv -l128m --overwrite=never \
+	/home/$(NONROOT)/.aspera/connect/bin/ascp -k1 -drT -l128m --overwrite=never \
 		-i /home/$(NONROOT)/.aspera/connect/etc/asperaweb_id_dsa.openssh \
 		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)
 
