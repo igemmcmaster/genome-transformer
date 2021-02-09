@@ -1,7 +1,7 @@
 """
 SSH into Colab instance.
 
-Launch and sustain idle a Colab notebook for 24 days.
+Launch and idle a Colab notebook for 24 days.
 
 Uncomment the `pip install` statement.
 Execute the code in a Colab notebook.
