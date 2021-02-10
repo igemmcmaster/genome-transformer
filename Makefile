@@ -21,6 +21,20 @@ colab:
 	useradd -m -s /bin/bash $(NONROOT)
 	su $(NONROOT) -c "./$(ASPERA_CONNECT).sh"
 	rm -rf $(ASPERA_CONNECT).sh
+	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
+
+genome_updater: group = none, jobs = 1
+genome_updater:
+	./genome_updater.sh \
+		-i -m -p \
+		-c all \
+		-d refseq,genbank \
+		-f genomic.gbff.gz,protein.gpff.gz \
+		-g $(group) \
+		-j taxids:1 \
+		-l "Complete Genome" \
+		-o $(GENBANK_DATA_DIR) \
+		-t $(jobs) \
 
 ncbi-genome-download: domain = none
 ncbi-genome-download:
