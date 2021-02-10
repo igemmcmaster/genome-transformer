@@ -22,6 +22,7 @@ colab:
 	su $(NONROOT) -c "./$(ASPERA_CONNECT).sh"
 	rm -rf $(ASPERA_CONNECT).sh
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
+	chmod +x genome_updater.sh
 
 genome_updater: group = none, jobs = 1
 genome_updater:
