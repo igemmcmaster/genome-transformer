@@ -25,6 +25,7 @@ colab:
 	chmod +x genome_updater.sh
 
 genome_updater: group = none, threads = 1, top = ""
+# make group=bacteria threads=16 top=taxids:1 genome_updater
 genome_updater:
 	./genome_updater.sh -m -p \
 		-c all \
