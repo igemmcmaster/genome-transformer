@@ -1,5 +1,5 @@
 ASPERA_CONNECT = ibm-aspera-connect-3.11.1.58-linux-g2.12-64
-GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM R&D/genomes"
+GENBANK_DATA_DIR = "/content/drive/Shareddrives/mGEM R&D/genomes"
 NONROOT = igem
 
 aspera: domain = none
@@ -24,16 +24,16 @@ colab:
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
 
-genome_updater: groups = none, threads = 1
+genome_updater: group = none, threads = 1, top = ""
 genome_updater:
 	./genome_updater.sh -m -p \
 		-c all \
 		-d refseq,genbank \
 		-f genomic.gbff.gz,protein.gpff.gz \
 		-g $(groups) \
-		-j taxids:1 \
+		-j $(top) \
 		-l "Complete Genome" \
-		-o $(GENBANK_DATA_DIR) \
+		-o $(GENBANK_DATA_DIR)/$(group) \
 		-t $(threads)
 
 ncbi-genome-download: domain = none
