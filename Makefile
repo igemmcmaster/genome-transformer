@@ -31,7 +31,7 @@ genome_updater:
 		-c all \
 		-d refseq,genbank \
 		-f genomic.gbff.gz,protein.gpff.gz \
-		-g $(groups) \
+		-g $(group) \
 		-j $(top) \
 		-l "Complete Genome" \
 		-o $(GENBANK_DATA_DIR)/$(group) \
