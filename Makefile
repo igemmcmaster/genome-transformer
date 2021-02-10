@@ -36,7 +36,7 @@ genome_updater:
 		-l "Complete Genome" \
 		-o $(group) \
 		-t $(threads)
-	mv $(group) $(GENBANK_DATA_DIR)
+	mv -v $(group) $(GENBANK_DATA_DIR)
 
 ncbi-genome-download: domain = none
 ncbi-genome-download:
