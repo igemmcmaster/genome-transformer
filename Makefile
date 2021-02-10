@@ -1,12 +1,12 @@
 ASPERA_CONNECT = ibm-aspera-connect-3.11.1.58-linux-g2.12-64
-GENBANK_DATA_DIR = "/content/drive/Shareddrives/mGEM R&D/genomes"
+GENBANK_DATA_DIR = "/content/drive/Shareddrives/mGEM R&D"
 NONROOT = igem
 
 aspera: domain = none
 aspera:
 	/home/$(NONROOT)/.aspera/connect/bin/ascp -k1 -drT -l128m --overwrite=never \
 		-i /home/$(NONROOT)/.aspera/connect/etc/asperaweb_id_dsa.openssh \
-		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)/genbank
+		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)/genomes/genbank
 
 colab:
 	apt install bc htop iftop parallel vim --yes
@@ -46,7 +46,7 @@ ncbi-genome-download:
 		--assembly-levels complete \
 		--debug \
 		--formats genbank \
-		--output-folder $(GENBANK_DATA_DIR)/genbank \
+		--output-folder $(GENBANK_DATA_DIR)/genomes/genbank \
 		--parallel 16 \
 		--progress-bar \
 		--retries 9999 \
