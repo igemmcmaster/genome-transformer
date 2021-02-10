@@ -38,7 +38,6 @@ genome_updater:
 		-t $(threads) \
 		$(flags)
 	cp -ruv $(group) $(GENBANK_DATA_DIR)
-	rm -rf $(group)
 
 ncbi-genome-download: domain = none
 ncbi-genome-download:
