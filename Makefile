@@ -1,12 +1,12 @@
 ASPERA_CONNECT = ibm-aspera-connect-3.11.1.58-linux-g2.12-64
-GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM R&D/genomes/genbank"
+GENBANK_DATA_DIR = "/home/drive/Shareddrives/mGEM R&D/genomes"
 NONROOT = igem
 
 aspera: domain = none
 aspera:
 	/home/$(NONROOT)/.aspera/connect/bin/ascp -k1 -drT -l128m --overwrite=never \
 		-i /home/$(NONROOT)/.aspera/connect/etc/asperaweb_id_dsa.openssh \
-		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)
+		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)/genbank
 
 colab:
 	apt install bc htop iftop vim --yes
@@ -24,18 +24,17 @@ colab:
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
 
-genome_updater: group = none, jobs = 1
+genome_updater: groups = none, threads = 1
 genome_updater:
-	./genome_updater.sh \
-		-i -m -p \
+	./genome_updater.sh -m -p \
 		-c all \
 		-d refseq,genbank \
 		-f genomic.gbff.gz,protein.gpff.gz \
-		-g $(group) \
+		-g $(groups) \
 		-j taxids:1 \
 		-l "Complete Genome" \
-		-o $(GENBANK_DATA_DIR)/$(group) \
-		-t $(jobs)
+		-o $(GENBANK_DATA_DIR) \
+		-t $(threads)
 
 ncbi-genome-download: domain = none
 ncbi-genome-download:
@@ -43,7 +42,7 @@ ncbi-genome-download:
 		--assembly-levels complete \
 		--debug \
 		--formats genbank \
-		--output-folder $(GENBANK_DATA_DIR) \
+		--output-folder $(GENBANK_DATA_DIR)/genbank \
 		--parallel 16 \
 		--progress-bar \
 		--retries 9999 \
