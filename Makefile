@@ -35,7 +35,7 @@ genome_updater:
 		-j taxids:1 \
 		-l "Complete Genome" \
 		-o $(GENBANK_DATA_DIR)/$(group) \
-		-t $(jobs) \
+		-t $(jobs)
 
 ncbi-genome-download: domain = none
 ncbi-genome-download:
