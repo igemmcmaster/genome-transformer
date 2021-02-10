@@ -24,7 +24,7 @@ colab:
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
 
-genome_updater: group = none, threads = 1, top = ""
+genome_updater: flags = "", group = none, threads = 1, top = ""
 # make group=bacteria threads=16 top=taxids:1 genome_updater
 genome_updater:
 	./genome_updater.sh -m -p \
@@ -35,7 +35,8 @@ genome_updater:
 		-j $(top) \
 		-l "Complete Genome" \
 		-o $(group) \
-		-t $(threads)
+		-t $(threads) \
+		$(flags)
 	cp -ruv $(group) $(GENBANK_DATA_DIR)
 	rm -rf $(group)
 
