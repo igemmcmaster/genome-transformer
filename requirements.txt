@@ -2,5 +2,6 @@ flax
 jax
 jaxlib
 pytorch
+sentencepiece
 tokenizers
 transformers
