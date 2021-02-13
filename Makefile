@@ -9,7 +9,7 @@ aspera:
 		anonftp@ftp.ncbi.nlm.nih.gov:/genomes/genbank/$(domain) $(GENBANK_DATA_DIR)/genomes/genbank
 
 colab:
-	apt install bc htop iftop parallel vim --yes
+	apt install bc cmake htop iftop parallel vim --yes
 	curl -fsSL https://code-server.dev/install.sh | sh
 	pip3 install -r requirements.txt
 	git clone https://github.com/kblin/ncbi-genome-download.git ../ncbi-genome-download
@@ -20,9 +20,12 @@ colab:
 	rm $(ASPERA_CONNECT).tar.gz
 	useradd -m -s /bin/bash $(NONROOT)
 	su $(NONROOT) -c "./$(ASPERA_CONNECT).sh"
-	rm -rf $(ASPERA_CONNECT).sh
+	rm -f $(ASPERA_CONNECT).sh
 	wget https://raw.githubusercontent.com/pirovc/genome_updater/master/genome_updater.sh
 	chmod +x genome_updater.sh
+	git clone https://github.com/google/sentencepiece.git
+	cd sentencepiece && mkdir build && cd build && cmake .. && $(MAKE) && $(MAKE) install && ldconfig -v
+	rm -rf sentencepiece
 
 genome_updater: flags = "", group = none, threads = 1, top = ""
 # make group=bacteria threads=16 top=taxids:1 genome_updater
