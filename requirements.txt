@@ -1,7 +1,7 @@
 flax
 jax
 jaxlib
-pytorch
 sentencepiece
 tokenizers
+torch
 transformers
