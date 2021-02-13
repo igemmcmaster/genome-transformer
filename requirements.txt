@@ -1,2 +1,6 @@
+flax
+jax
+jaxlib
+nystrom-attention
 tokenizers
 transformers
