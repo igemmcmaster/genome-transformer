@@ -1,6 +1,6 @@
 flax
 jax
 jaxlib
-nystrom-attention
+pytorch
 tokenizers
 transformers
