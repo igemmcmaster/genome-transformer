@@ -1,6 +1,5 @@
 absl-py
 biopython
-dask
 dask[dataframe]
 flax
 jax
