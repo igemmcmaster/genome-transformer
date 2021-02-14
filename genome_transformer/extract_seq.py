@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Example usage: ./extract_seq.py -datadir /content/drive/Shareddrives/mGEM\ R\&D/viral/2021-02-10_02-37-27/files -savepath seq.csv
+# Example usage: ./extract_seq.py -datadir /content/drive/Shareddrives/mGEM\ R\&D/viral/2021-02-10_02-37-27/files -savepath /content/drive/Shareddrives/mGEM\ R\&D/viral_seq.csv
 
 import gzip
 from pathlib import Path
