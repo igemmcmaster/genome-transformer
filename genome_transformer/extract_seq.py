@@ -27,7 +27,7 @@ def extract_seq(path: str):
 def main(argv):
     del argv
     ProgressBar().register()
-    df = db.from_sequence(str(datapath) for datapath in Path(FLAGS.datadir).iterdir() if [".gbff", ".gz"] == datapath.suffixes).to_dataframe({"datapath": str})
+    df = db.from_sequence(str(datapath) for datapath in Path(FLAGS.datadir).iterdir() if ".gbff" in datapath.suffixes and ".gz" in datapath.suffixes).to_dataframe({"datapath": str})
     df["sequence"] = df.datapath.map(extract_seq, meta=pd.Series(dtype=str))
     df.to_csv(FLAGS.savepath)
 
