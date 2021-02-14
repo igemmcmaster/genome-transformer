@@ -17,6 +17,9 @@ def extract_seq(path: Path):
 
 def main(argv):
     del argv
+    datapaths = Path(FLAGS.datadir).glob("**/*.gbff.gz")
+    for datapath in datapaths:
+        print(datapath)
 
 
 if __name__ == "__main__":
