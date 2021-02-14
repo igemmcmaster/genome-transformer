@@ -12,9 +12,9 @@ FLAGS = flags.FLAGS
 flags.DEFINE_integer("k", None, "Number of nucleotides for k-mer sequence generation", lower_bound=1)
 flags.DEFINE_string("savepath", None, "Path to save tokenizer parameters")
 
-nucleotides = ["a", "c", "g", "t"]
-unknown = "x"
-padding = "p"
+nucleotides = ["A", "C", "G", "T"]
+unknown = "X"
+padding = "P"
 extras = [padding, unknown]
 
 
