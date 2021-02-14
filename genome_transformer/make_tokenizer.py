@@ -1,4 +1,8 @@
+#!/usr/bin/python3
+# Example usage: ./make_tokenizer.py -k 2 -savepath tokenizer
+
 import itertools
+import pathlib
 
 import tokenizers
 
@@ -31,7 +35,9 @@ def main(argv):
     del argv
     tokenizer = make_tokenizer(FLAGS.k)
     if FLAGS.savepath is not None:
-        tokenizer.save(FLAGS.savepath, pretty=True)
+        tokenizer.save(FLAGS.savepath + ".json", pretty=True)
+        pathlib.Path(FLAGS.savepath).mkdir(parents=True, exist_ok=True)
+        tokenizer.model.save(FLAGS.savepath)
 
 
 if __name__ == "__main__":
