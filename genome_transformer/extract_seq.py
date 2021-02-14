@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #Example usage: ./extract_seq.py -datadir /content/drive/Shareddrives/mGEM\ R\&D/viral/2021-02-10_02-37-27/files
 
 import gzip
@@ -18,7 +18,7 @@ def extract_seq(path: Path):
 
 def main(argv):
     del argv
-    datapaths = Path(FLAGS.datadir).glob("**/*.gbff.gz")
+    datapaths = (datapath for datapath in Path(FLAGS.datadir).iterdir() if ".gbff" in datapath.suffixes)
     for datapath in datapaths:
         print(datapath)
 
