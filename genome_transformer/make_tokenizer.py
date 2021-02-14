@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # Example usage: ./make_tokenizer.py -k 2 -savepath tokenizer
 
 import itertools
