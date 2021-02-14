@@ -1,5 +1,6 @@
 absl-py
 biopython
+dask
 flax
 jax
 jaxlib
