@@ -26,7 +26,7 @@ def make_tokenizer(k: int):
     values = range(len(keys))
     vocab = dict(zip(keys, values))
     tokenizer = tokenizers.Tokenizer(tokenizers.models.WordLevel(vocab=vocab, unk_token=unknown))
-    tokenizer.enable_padding(pad_token="p")
+    tokenizer.enable_padding(pad_token=padding)
     tokenizer.pre_tokenizer = tokenizers.pre_tokenizers.WhitespaceSplit()
     return tokenizer
 
