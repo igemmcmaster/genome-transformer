@@ -1,3 +1,4 @@
+absl-py
 flax
 jax
 jaxlib
