@@ -18,7 +18,10 @@ flags.DEFINE_string("savepath", None, "Path to save DataFrame")
 
 def extract_seq(path: str):
     with gzip.open(path, "rt") as f:
-        return next(SeqIO.parse(f, "genbank")).seq
+        try:
+            return next(SeqIO.parse(f, "genbank")).seq
+        except EOFError as error:
+            return str(error)
 
 
 def main(argv):
