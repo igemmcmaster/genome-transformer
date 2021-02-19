@@ -1,6 +1,6 @@
 # genome-transformer
 
-Apply the [Sub-Linear Memory Performer](https://arxiv.org/pdf/2012.11346.pdf) to genome sequences and see what happens.
+Apply a collection of efficient transformers to genome sequences and see what happens.
 
 ## Background
 
@@ -45,10 +45,9 @@ This is termed a "supervised" learning application.
 
 ## Deliverables
 
-- [ ] Fetch pretraining data: genomes
-- [ ] Make tokenizer and tokenize gene sequences
-- [ ] Understand how to use Google Research's SLiM Performer [code](https://github.com/google-research/google-research/tree/master/performer/models/slim_performer)
-- [ ] Pretrain SLiM Performer
+- [x] Fetch pretraining data: genomes
+- [x] Make tokenizer and tokenize gene sequences
+- [ ] Pretrain efficient transformers
 - [ ] Release pretrained model weights
 
 ## Credit and Citations
